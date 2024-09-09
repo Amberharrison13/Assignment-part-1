@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.part1;
+import java.util.Scanner;
+/**
+ *
+ * @author RC_Student_lab
+ */
+public class Part1 {
+
+    public static void main(String[] args) {
+        String username;
+        String password;
+        String firstname,lastname;
+       
+        Scanner scanner = new Scanner(System.in);
+
+        // Input fields
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        System.out.print("Enter first name: ");
+        String firstName = scanner.nextLine();
+
+        System.out.print("Enter last name: ");
+        String lastName = scanner.nextLine();
+
+        // Validate inputs
+        String result =vaildateAccounts(username, password, firstName, lastName);
+        System.out.println(result);
+
+        scanner.close();
+    }
+
+
+        // Check password
+        if (password.length() < 8){
+            return "Password must be at least 8 characters long.";
+       }
+        if (!password.matches(".*[A-Z].*")) {
+            return "Password must contain at least one uppercase letter.";
+       }
+        if (!password.matches(".*[a-z].*")) {
+            return "Password must contain at least one lowercase letter.";
+       }
+
+        if (!password.matches(".*\\d.*")) {
+            return "Password must contain at least one number.";
+       }
+
+        // Check first name
+        if (firstName.length() < 1 || firstName.length() > 30 || !firstName.matches("[a-zA-Z]+")) {
+            return "First name must be between 1 and 30 characters long and contain only letters.";
+       }
+
+        // Check last name
+        if (lastName.length() < 1 || lastName.length() > 30 || !lastName.matches("[a-zA-Z]+")) {
+            return "Last name must be between 1 and 30 characters long and contain only letters.";
+       }
+
+        return "Account created successfully!";
+}
