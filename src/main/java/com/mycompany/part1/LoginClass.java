@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
  * @author RC_Student_lab
  */
 public class LoginClass {
+    private boolean Found=false;
+    private boolean check=false;
     // User data storage
     private final Map<String, User> users = new HashMap<>();
 
@@ -28,42 +30,62 @@ public class LoginClass {
     }
 
     // Method to check if the username meets the format requirements
-    public String checkUserName(String username) {
-        if (username != null && username.contains("_") && username.length() <= 5) {
-            return "Username successfully captured";
-        } else {
-            return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
+    public boolean CheckUsername(String username){  
+        //temp varaiable for checking
+        boolean Found=false;
+        
+        //check the username
+        if(username.contains("_") && username.length()<=5){
+            //the assign to true
+            check= true;
+            //message
+            System.out.println("username is captured");
+            
+        }else{
+            //assign to false
+            check= false;
+            //message
+            System.out.println("username is not captured");
         }
+        return check;
     }
 
     // Method to check if the password meets complexity requirements
-    public String checkPasswordComplexity(String password) {
-        if (password != null &&
-            password.length() >= 8 &&
-            Pattern.compile("[A-Z]").matcher(password).find() &&
-            Pattern.compile("[0-9]").matcher(password).find() &&
-            Pattern.compile("[^a-zA-Z0-9]").matcher(password).find()) {
-            return "Password successfully captured";
-        } else {
-            return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number, and a special character.";
-        }
+    public boolean checkPassword(String password){
+            //pattern regtex
+            Pattern check_num = Pattern.compile( "[0123456789]");
+            Pattern check_special = Pattern.compile("[*-`~!@#$%&_'^]");
+            Pattern check_Upper =Pattern.compile("[QWERTYUIOPASDFGHJKLZXCVBNM]");
+            
+            //Temp variable found
+            
+            
+            //check all here
+            if(check_num.matcher(password).find()&& check_special.matcher("password").find()&&check_Upper.matcher(password).find()){
+            Found= true;
+            System.out.println("Password captured");
+      
+        }else{
+           //assign to false
+        Found=false;
+        System.out.println("Password not captured");
+                }
+        return Found;
     }
 
     // Method to register a new user
-    public String registerUser(String username, String password, String firstName, String lastName) {
-        String usernameMessage = checkUserName(username);
-        if (!usernameMessage.equals("Username successfully captured")) {
-            return usernameMessage;
+    public String registerUser() {
+        
+        if(!check&&Found){
+            System.out.println("username is not successfully captured");  
+        }else if(check&&!Found){
+            System.out.println("password is not successfully captured");   
+        }else{
+            System.out.println("Your registration is succesful");
         }
-
-        String passwordMessage = checkPasswordComplexity(password);
-        if (!passwordMessage.equals("Password successfully captured")) {
-            return passwordMessage;
-        }
-
-        // Store the user if both username and password are valid
-        users.put(username, new User(password, firstName, lastName));
-        return "User registered successfully.";
+        
+        
+        return "  ";
     }
 
     // Method to verify login credentials
