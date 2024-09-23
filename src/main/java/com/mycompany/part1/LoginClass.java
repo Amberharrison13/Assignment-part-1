@@ -15,6 +15,7 @@ public class LoginClass {
     private boolean check=false;
     // User data storage
     private final Map<String, User> users = new HashMap<>();
+    private boolean loginstatus=false;
 
     // Nested class to represent a User
     private static class User {
@@ -97,4 +98,9 @@ public class LoginClass {
             return "Username or password incorrect, please try again.";
         }
     }
+   public boolean returnloginstatus(){
+       return loginstatus;
+   } 
+    
+ 
 }

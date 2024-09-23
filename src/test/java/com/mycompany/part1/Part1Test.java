@@ -16,6 +16,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author RC_Student_lab
  */
 public class Part1Test {
+
+    @BeforeAll
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterAll
+    public static void tearDownClass() throws Exception {
+    }
+
+    @BeforeEach
+    public void setUp() throws Exception {
+    }
+
+    @AfterEach
+    public void tearDown() throws Exception {
+    }
     
    
 
