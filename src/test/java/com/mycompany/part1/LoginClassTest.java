@@ -17,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class LoginClassTest {
     
+    private LoginClass loginclass;
+    
     public LoginClassTest() {
     }
     
@@ -30,10 +32,12 @@ public class LoginClassTest {
     
     @BeforeEach
     public void setUp() {
+        loginclass =new LoginClass();
     }
     
     @AfterEach
     public void tearDown() {
+        loginclass=null;
     }
 
     /**
@@ -42,13 +46,13 @@ public class LoginClassTest {
     @Test
     public void testCheckUsername() {
         System.out.println("CheckUsername");
-        String username = "";
+        String username = "user_";
         LoginClass instance = new LoginClass();
         boolean expResult = false;
         boolean result = instance.CheckUsername(username);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,13 +61,13 @@ public class LoginClassTest {
     @Test
     public void testCheckPassword() {
         System.out.println("checkPassword");
-        String password = "";
+        String password = "password";
         LoginClass instance = new LoginClass();
         boolean expResult = false;
         boolean result = instance.checkPassword(password);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -72,12 +76,12 @@ public class LoginClassTest {
     @Test
     public void testRegisterUser() {
         System.out.println("registerUser");
-        LoginClass instance = new LoginClass();
-        String expResult = "";
-        String result = instance.registerUser();
+        LoginClass loginclass = new LoginClass();
+        String expResult = "Password is not correctly formatted,please ensure the passwod contains at least 8 characters,A capital letter, a number and special character";
+        String result = loginclass.registerUser("user_", "Passw0rd!", "John", "Doe");
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -86,14 +90,28 @@ public class LoginClassTest {
     @Test
     public void testLoginUser() {
         System.out.println("loginUser");
-        String username = "";
-        String password = "";
+        String username = "username123";
+        String password = "Passw0rd!";
         LoginClass instance = new LoginClass();
-        String expResult = "";
+        String expResult = "loginUser was not correctly formatted";
         String result = instance.loginUser(username, password);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
+    }
+
+    /**
+     * Test of returnloginstatus method, of class LoginClass.
+     */
+    @Test
+    public void testReturnloginstatus() {
+        System.out.println("returnloginstatus");
+        LoginClass loginclass = new LoginClass();
+        boolean expResult = false;
+        boolean result = loginclass.returnloginstatus();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    
     }
     
 }

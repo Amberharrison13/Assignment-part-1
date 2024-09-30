@@ -75,7 +75,7 @@ public class LoginClass {
     }
 
     // Method to register a new user
-    public String registerUser() {
+    public String registerUser(String username, String password, String name, String lastname) {
         
         if(!check&&Found){
             System.out.println("username is not successfully captured");  

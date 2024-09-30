@@ -41,7 +41,7 @@ public class Part1 {
         password = scanner.nextLine();  
         }
 
-        log.registerUser();
+        log.registerUser("user_", "Passw0rd!", "John", "Doe");
         // Validate inputs
         String result = bvvv.vaildateAccounts(username, password, firstname, lastname);
         System.out.println(result);
